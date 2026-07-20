@@ -8,9 +8,9 @@ Is it possible to accurately predict these overtraining-related injuries?
 By utilizing data cleaning techniques and implementing a Random Forest Classifier, this model achieves a high-accuracy predictive baseline to help athletes and coaches mitigate structural injury risks.
 ## Datasets Used
 The project processes data from four source CSV files tracking subject demographics, activities, and mechanical markers:
-High_Accuracy_Sport_Injury_Dataset.csv (Primary dataset used for the predictive model)
-run_data_meta.csv
-walk_data_meta.csv
+High_Accuracy_Sport_Injury_Dataset.csv (Primary dataset used for the predictive model),
+run_data_meta.csv,
+walk_data_meta.csv,
 wlinj_dryad.csv
 ## Data Pipeline & Cleaning
 Real-world athletic data often suffers from missing metrics. The following preprocessing steps were taken to ensure clean training data:
