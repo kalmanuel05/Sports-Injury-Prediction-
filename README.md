@@ -1,35 +1,60 @@
 # Overtraining and Injury: Predicting Athlete Injury Risk from Performance and Training Data
-This repository contains a data analysis and machine learning project aimed at identifying overtraining-related problems and predicting injury risk in athletes using performance, physical, and training metrics.
+
+Data analysis and machine learning project that identifies overtraining-related problems and predicts injury risk in athletes from performance, physical, and training metrics.
+
 ## Project Overview
-Injuries caused by overtraining are a significant hurdle for athletes across all levels. This project explores four distinct datasets to answer three central questions:
-How common are overtraining-related problems?
-Are specific training variables able to predict injury?
-Is it possible to accurately predict these overtraining-related injuries?
-By utilizing data cleaning techniques and implementing a Random Forest Classifier, this model achieves a high-accuracy predictive baseline to help athletes and coaches mitigate structural injury risks.
+
+Overtraining injuries are a major challenge for athletes at every level. This project uses four datasets to answer three questions:
+
+1. How common are overtraining-related problems?
+2. Can specific training variables predict injury?
+3. Can overtraining-related injuries be predicted accurately?
+
+After cleaning the data and training a Random Forest Classifier, the model reaches a high-accuracy baseline that can help athletes and coaches spot structural injury risk earlier.
+
 ## Datasets Used
-The project processes data from four source CSV files tracking subject demographics, activities, and mechanical markers:
-High_Accuracy_Sport_Injury_Dataset.csv (Primary dataset used for the predictive model),
-run_data_meta.csv,
-walk_data_meta.csv,
-wlinj_dryad.csv
+
+Four CSV files tracking subject demographics, activities, and mechanical markers:
+
+- `High_Accuracy_Sport_Injury_Dataset.csv` — primary dataset for the predictive model
+- `run_data_meta.csv`
+- `walk_data_meta.csv`
+- `wlinj_dryad.csv`
+
 ## Data Pipeline & Cleaning
-Real-world athletic data often suffers from missing metrics. The following preprocessing steps were taken to ensure clean training data:
-Threshold Dropping: Evaluated missing data percentages across features. Any column missing more than 40% of its data was permanently dropped.
-Imputation: For remaining missing data (NaN), numerical missing values were imputed with 0, and categorical columns were flagged as "Unknown".
-Feature Scaling: Applied a MinMaxScaler to normalize individual physical attributes and training metrics, ensuring equal weight distribution across features.
+
+Athletic data often has missing values. Preprocessing steps:
+
+1. **Threshold dropping** — Drop any column missing more than 40% of its values.
+2. **Imputation** — Fill remaining numeric NaNs with `0`; label categorical missing values as `"Unknown"`.
+3. **Feature scaling** — Apply `MinMaxScaler` so physical attributes and training metrics share equal weight.
+
 ## Model Performance
-A Random Forest Classifier was trained using an 80/20 train-test split.
-Model: RandomForestClassifier(n_jobs=-1, random_state=42)
-Key Features Included: Age, Gender, BMI, Training Frequency, Training Duration, Warmup Time, Sleep Hours, Flexibility Score, Muscle Asymmetry, Recovery Time, and Injury History.
-Prediction Target: Injury_Risk (0 or 1)
+
+A Random Forest Classifier was trained with an 80/20 train-test split.
+
+- **Model:** `RandomForestClassifier(n_jobs=-1, random_state=42)`
+- **Features:** Age, Gender, Height_cm, Weight_kg, BMI, Training Frequency, Training Duration, Warmup Time, Sleep Hours, Flexibility Score, Muscle Asymmetry, Recovery Time, Injury History, Stress Level, Training Intensity
+- **Target:** `Injury_Risk` (0 or 1)
+
 ### Results
-Accuracy=0.97
-The model demonstrates an outstanding 97% accuracy rate on unseen test data, making it highly reliable for identifying early indicators of athlete overtraining risk.
+
+**Accuracy = 0.97**
+
+97% accuracy on held-out test data, which makes the model a strong baseline for early overtraining risk signals.
+
 ## Dependencies
-To run the notebook locally, ensure you have the following Python libraries installed:
-Bash
-pip install pandas numpy matplotlib scikit-learn ipython
+
+Install the Python libraries used by the notebook:
+
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn ipython
+```
+
 ## How to Use
-Clone the repository to your local machine.
-Ensure the four required CSV datasets are in the same directory as your script/notebook.
-Run the Jupyter Notebook to execute the pipeline from data cleaning through model valuation.
+
+1. Clone the repository.
+2. Keep the four CSV files in the same directory as the notebook.
+3. Open and run `injury_predict.ipynb` to run the full pipeline from cleaning through model evaluation.
+
+A related presentation is included as `Presentation_ACSC.pdf`.
